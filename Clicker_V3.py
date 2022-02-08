@@ -2,7 +2,6 @@ import random
 import tkinter
 import threading
 import time
-from turtle import up
 Amount = 0
 lastClicked = ""
 def upDown(AddorRemoveNumber = 0):
@@ -48,6 +47,7 @@ def DevideOrMultiply(event):
             Amount = Amount // 3
             StringNumber.set(Amount)
 
+
 def KeepTrackOfAmount(event):
     global Amount
 
@@ -71,6 +71,11 @@ score = tkinter.Label(textvariable=StringNumber,pady=20,padx=100)
 score.bind("<Enter>", ChangeColorOnHover)
 score.bind("<Leave>", KeepTrackOfAmount)
 score.bind('<Double-Button-1>', DevideOrMultiply)
+window.bind("<=>", lambda event: upDown(1))
+window.bind("<Up>", lambda event: upDown(1))
+window.bind("-", lambda event: upDown(-1))
+window.bind("<Down>", lambda event: upDown(-1))
+window.bind("<space>", DevideOrMultiply)
 score.pack()
 downButton = tkinter.Button(text="-1",padx=100,pady=20,command=lambda: upDown(-1))
 downButton.pack()
